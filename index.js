@@ -58,8 +58,8 @@ spiderListener.on("getCheck",function(){
         console.log("Ok!");
         checkNumber=spiderForSXU.secret({
             type:'check',
-            id:'201601001073',
-            pwd:'cjy74598',
+            id:'',
+            pwd:'',
             schoolNumber:'10108',
             checkNumber:checkNumber
         });
