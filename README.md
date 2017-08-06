@@ -41,19 +41,17 @@ var spiderForSXU=new spider();
 获取__viewstate
 <code>
   spiderForSXU.getViewState(cookie,callback);
+
+  
+</code>
   
   
   //cookie为获取到的cookie
   
-  
   //callback为获取完viewstate后所进行的操作
-  
   
   //__viewstate属性将保存在spider实例的viewstate属性中，可通过获取属性API调用得到
   
-  
-</code>
-
 
 登录
 <code>
@@ -114,8 +112,8 @@ var spiderForSXU=new spider();
 <code>
   spiderForSXU.secret(option)
   /*
-  *@param Object 
-  * like{
+  *  @param Object 
+  *  like{
   *     type:"password or check",//所需md5码的类型，密码还是验证码
   *      id:"your id",//你的账号
   *      pwd:"your password",//你的密码
@@ -123,7 +121,7 @@ var spiderForSXU=new spider();
   *      schoolNumber:"your school number"//你的学校代码
   *  }
   *
-  *@param string //返回所得md5码
+  *  @param string //返回所得md5码
   *
   */
 </code>
