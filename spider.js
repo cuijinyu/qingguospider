@@ -161,17 +161,28 @@ spider.prototype.setCookie=function(cookie){
     this.theCookie=cookie;
 };
 //获取原始成绩
-spider.prototype.getRealScore=function () {
+spider.prototype.getRealScore=function (year,term,cab) {
+    var option=qs.stringify({
+        sel_xn:year,
+        sel_xq:term,
+        SJ:"1",
+        btn_search:"¼ìË÷",
+        SelXNXQ:"2",
+        zfx_flag:"0",
+        zxf:"0"
+    });
+   option=iconv.encode(option,"gbk");
     var req=http.request({
         hostname:'bkjw.sxu.edu.cn',
         port:'80',
-        path:'/xscj/Stu_MyScore_Drawimg.aspx?x=1&h=2&w=867&xnxq=20161&xn=2016&xq=1&rpt=0&rad=2&zfx=0',
-        method:'GET',
+        path:'/xscj/Stu_MyScore_rpt.aspx',
+        method:'POST',
         headers:{
             'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
             'Accept-Encoding':'gzip, deflate',
             'Accept-Language':'zh-CN,zh;q=0.8',
             'Cache-Control':'no-cache',
+            'Content-Type':"application/x-www-form-urlencoded",
             'Connection':'keep-alive',
             'Cookie':`${this.theCookie}`,
             'Host':'bkjw.sxu.edu.cn',
@@ -180,31 +191,22 @@ spider.prototype.getRealScore=function () {
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'
         }
     },(res)=>{
-        var imageData='';
-        console.log(res);
-        console.log(`状态码: ${res.statusCode}`);
-        res.setEncoding("binary");
-        res.on("data",(chunk)=>{
-            console.log(chunk.toString());
-            imageData+=chunk;
-        });
-        res.on("end",()=>{
-            fs.writeFile('score.png',imageData,"binary",(err)=>{
-                if(err){
-                    console.log(err);
-                }
-            });
-            console.log("OK SUCCESSFUL");
-        })
+            //console.log(res);
+            var $=cheerio.load(res);
+          	fs.writeFile("res.txt",res.body,(err)=>{
+          		console.log(err);
+          	})
     });
-
     req.on('err',(err)=>{
         console.log(err);
     });
-
+    req.write(option);
     req.end();
-    console.log("获取成绩数据成功");
-};
+    return new Promise((resolve,reject)=>{
+        resolve();
+    })
+    };
+
 //获取课表
 spider.prototype.getClass=function () {
 
@@ -234,7 +236,7 @@ spider.prototype.getValueScore=function () {
         console.log(`状态码: ${res.statusCode}`);
         res.setEncoding("binary");
         res.on("data",(chunk)=>{
-            console.log(chunk.toString());
+           // console.log(chunk.toString());
             imageData+=chunk;
         });
         res.on("end",()=>{
@@ -289,7 +291,6 @@ spider.prototype.getSWeb=function(url,needCookie){
             }
         })
 };
-
 //md5加密
 spider.prototype.secret=function(option){
     if(option.type==="password"){
