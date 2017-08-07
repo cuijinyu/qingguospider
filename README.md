@@ -14,36 +14,33 @@
 
 导入
 
-<code>
 var spider=require("./spider.js");
-</code>
 
 
 
 实例化一个spider
 
-<code>
 var spiderForSXU=new spider();
-</code>
 
 
 登陆一个网页并获取其cookie
 
 
-<code>
   spiderForSXU.getWeb(callback);
+  
   callback=function(){
+  
     console.log("this is a function");
+    
   };
-</code>
+  
 
 
 获取__viewstate
-<code>
+
   spiderForSXU.getViewState(cookie,callback);
 
-  
-</code>
+
   
   
   //cookie为获取到的cookie
@@ -54,16 +51,14 @@ var spiderForSXU=new spider();
   
 
 登录
-<code>
   
   spiderForSXU.login(url,form,opt,callback);
   
   //url为登录地址,opt为完整登录所需的报头,form为登录表单,callback为回调
-</code>
 
 
 获取图片(暂仅针对山西大学教务网络管理系统，如需使用暂时请自行更改地址)
-<code>
+
   spiderForSXU.getPic(picurl,picname,opt);
   <br>
   //picurl为图片网络地址
@@ -72,19 +67,14 @@ var spiderForSXU=new spider();
   <br>
   //当需要cookie或特殊报头时，在opt中提供完整报头
   
-</code>
 
 
 获取原始成绩
-<code>
   spiderForSXU.getRealScore();
-</code>
 
 
 获取有效成绩
-<code>
   spiderForSXU.getValueScore();
-</code>
 
 获取spider实例的属性
 <code>
@@ -93,23 +83,15 @@ var spiderForSXU=new spider();
 
 
 获取cookie
-<code>
   spiderForSXU.getCookie();
-</code>
 
 
 解析一个指定的网页，并返回promise对象
-<code>
-  spiderForSXU.getSWeb(url,needCookie);
-  
-  //url为要解析的地址
-  
+  spiderForSXU.getSWeb(url,needCookie);  
+  //url为要解析的地址  
   //needCookie为是否需要cookie值
-  
-</code>
 
 使用青果的md5加密数据（密码及验证码，用于登录使用）
-<code>
   spiderForSXU.secret(option)
   /*
   *  @param Object 
@@ -124,4 +106,3 @@ var spiderForSXU=new spider();
   *  @param string //返回所得md5码
   *
   */
-</code>
