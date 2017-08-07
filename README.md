@@ -23,7 +23,7 @@ var spider=require("./spider.js");
 var spiderForSXU=new spider();
 ```
 
-登陆一个网页并获取其cookie
+登陆spider实例化的网页并获取其cookie
 
 ```
   spiderForSXU.getWeb(callback);
@@ -39,15 +39,14 @@ var spiderForSXU=new spider();
 获取__viewstate
 ```
   spiderForSXU.getViewState(cookie,callback);
-
-```
-  
-  
   //cookie为获取到的cookie
   
   //callback为获取完viewstate后所进行的操作
   
   //__viewstate属性将保存在spider实例的viewstate属性中，可通过获取属性API调用得到
+  
+```
+  
   
 
 登录
@@ -111,4 +110,11 @@ var spiderForSXU=new spider();
   *  @param string //返回所得md5码
   *
   */
+```
+
+获取课表(暂未完成，获取本学期的课表)
+
+```
+spider.prototype.getClass();
+
 ```
