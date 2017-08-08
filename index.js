@@ -134,15 +134,16 @@ spiderListener.on("getRealScore",function(){
                     'User-Agent':' Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
                 }
             },(res)=>{
-                var imageData='';
-                console.log(res);
+                var chunks=[];
+               // console.log(res);
                 console.log(`状态码: ${res.statusCode}`);
-                res.setEncoding("binary");
+                //res.setEncoding("binary");
                 res.on("data",(chunk)=>{
-                    imageData+=chunk;
+                    chunks.push(chunk);
                 });
                 res.on("end",()=>{
-                    fs.writeFile('./score.jpg',imageData,"binary",(err)=>{
+                    var body=Buffer.concat(chunks);
+                    fs.writeFile('./score.jpg',body,"binary",(err)=>{
                         if(err){
                             console.log(err);
                         }
