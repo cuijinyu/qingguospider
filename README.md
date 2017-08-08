@@ -68,7 +68,7 @@ var spiderForSXU=new spider();
 ```  
 
 
-获取原始成绩
+获取原始成绩(已经可以使用，但是不明原因当宽度超过600px时会不能接收完全)
 ```
   spiderForSXU.getRealScore();
 ```
@@ -118,3 +118,4 @@ var spiderForSXU=new spider();
 spider.prototype.getClass();
 
 ```
+[青果教务系统登录原理分析](http://www.cnblogs.com/xcxjy/p/7297797.html)
