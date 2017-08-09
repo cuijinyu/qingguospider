@@ -122,10 +122,18 @@ var spiderForSXU=new spider();
   */
 ```
 
-获取课表(暂未完成，获取本学期的课表)
+获取课表(暂未完成，获取课表)
 
 ```
-spider.prototype.getClass();
+/*
+*
+*@param year 要获取的课表年份
+*@param term 学期，0代表第一学期，1代表第二学期
+*
+*
+*
+/
+spider.prototype.getClass(year,term);
 
 ```
 [青果教务系统登录原理分析](http://www.cnblogs.com/xcxjy/p/7297797.html)
